@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirijhon Kent Diaz | IT Staff &amp; Command Center Specialist</title>
+    <meta name="description" content="Portfolio of Nirijhon Kent Diaz, IT Staff &amp; Command Center Specialist and TESDA Computer Systems Servicing NC II passer, featuring CCTV surveillance operations, IT infrastructure and custom software projects.">
+    <meta name="theme-color" content="#0b0c10">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0c10'/><text x='50' y='68' font-size='58' font-family='monospace' font-weight='700' fill='%236366f1' text-anchor='middle'>N</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<!-- ===================== BOOT SEQUENCE ===================== -->
+<!-- Holds the screen while the content and the 3D project textures come up.
+     A command-centre style boot log plus a live particle canvas, so the wait
+     reads as the portfolio powering on rather than a static splash.
+
+     Three independent safety nets guarantee it can never trap a visitor:
+     the <noscript> rule below, the CSS failsafe animation, and the JS timer
+     in main.js. The page underneath is only covered, never hidden. -->
+<div class="boot" id="intro-loader" role="status" aria-live="polite">
+    <canvas class="boot__canvas" id="boot-canvas" aria-hidden="true"></canvas>
+    <div class="boot__grid" aria-hidden="true"></div>
+    <div class="boot__scan" aria-hidden="true"></div>
+
+    <div class="boot__panel">
+        <div class="boot__mark" aria-hidden="true">
+            <span class="boot__ring boot__ring--a"></span>
+            <span class="boot__ring boot__ring--b"></span>
+            <span class="boot__core">ND</span>
+        </div>
+
+        <div class="boot__id" aria-hidden="true">
+            <p class="boot__name" id="boot-name">&nbsp;</p>
+            <p class="boot__role">IT Staff &amp; Command Center Specialist</p>
+        </div>
+
+        <ul class="boot__log" id="boot-log" aria-hidden="true"></ul>
+
+        <div class="boot__meter" aria-hidden="true">
+            <span class="boot__fill" id="intro-fill"></span>
+        </div>
+        <p class="boot__pct" aria-hidden="true">
+            <span class="boot__num"><span id="intro-count">0</span>%</span>
+            <span class="boot__phase" id="boot-phase">BOOTING</span>
+        </p>
+    </div>
+
+    <span class="sr-only" id="intro-announce">Loading portfolio</span>
+</div>
+<noscript><style>.boot { display: none !important; }</style></noscript>
+
+<!-- Fixed WebGL background layer: particle field + project planes. -->
+<canvas id="webgl-canvas" aria-hidden="true"></canvas>
+
+<!-- Scroll progress indicator -->
+<div class="progress-rail" aria-hidden="true">
+    <div class="progress-rail__bar" id="progress-bar"></div>
+</div>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar" id="topbar">
+    <a href="#intro" class="topbar__brand">
+        <span class="topbar__dot" aria-hidden="true"></span>
+        <span>NIRIJHON KENT DIAZ <span>/ 3D PORTFOLIO</span></span>
+    </a>
+    <nav class="topbar__nav" id="nav-links" aria-label="Primary"></nav>
+    <a href="#contact" class="btn btn--primary">Inquire Now</a>
+</header>
+
+<div class="page">
+
+    <!-- ===================== 01 / INTRO ===================== -->
+    <section class="section hero" id="intro">
+        <div class="hero__grid">
+            <div>
+                <span class="eyebrow">Command Center Operations / IT Infrastructure</span>
+                <h1 class="display hero__title gradient-text" id="hero-title"></h1>
+                <span class="hero__role" id="hero-role"></span>
+
+                <div class="hero__actions">
+                    <button class="btn btn--primary" data-cv="DIAZ.NIRIJHON%20KENT.pdf">
+                        View Full CV
+                    </button>
+                    <a class="btn btn--ghost" href="#work">Explore the Work</a>
+                </div>
+
+                <!-- Full text stays in the DOM for SEO and no-JS; the typewriter
+                     rewrites it progressively once JS confirms motion is fine. -->
+                <p class="hero__objective" id="hero-objective">Results-driven and certified IT Specialist with extensive experience in Command Center CCTV surveillance operations, video management software (Dahua/Hikvision NVRs), hardware diagnostics, and network troubleshooting. Proven track record in maintaining continuous operational uptime, managing system logs, and developing custom desktop/web software utilities to streamline helpdesk ticketing and internal administrative workflows.</p>
+            </div>
+
+            <!-- Profile card -->
+            <aside class="glass profile-card" data-reveal>
+                <div class="profile-card__avatar">
+                    <img id="avatar-img" src="Profile.png" alt="Nirijhon Kent Diaz Profile" width="148" height="148">
+                    <span class="profile-card__hint">Replace photo</span>
+                    <input type="file" id="avatar-upload" accept="image/*" aria-label="Upload a replacement profile photo">
+                </div>
+                <ul class="badge-list" id="badge-list"></ul>
+                <div class="contact-list" id="contact-list"></div>
+            </aside>
+        </div>
+
+        <div class="metrics" id="metrics"></div>
+    </section>
+
+    <!-- ===================== 02 / CREDENTIALS ===================== -->
+    <section class="section" id="credentials">
+        <header class="section-head" data-reveal>
+            <span class="section-index">02</span>
+            <span class="eyebrow">Qualifications</span>
+            <h2 class="headline">Verified Credentials &amp; Education</h2>
+        </header>
+        <div class="credential-grid" id="credential-grid"></div>
+    </section>
+
+    <!-- ===================== 03 / SKILLS ===================== -->
+    <section class="section" id="skills">
+        <header class="section-head" data-reveal>
+            <span class="section-index">03</span>
+            <span class="eyebrow">Proficiency</span>
+            <h2 class="headline">Technical Skills Matrix</h2>
+        </header>
+        <div class="skill-grid" id="skill-grid"></div>
+    </section>
+<!-- ===================== 04 / WORK (pinned 3D stage) ===================== -->
+    <!-- The canvas renders the project images; this overlay renders the text. -->
+    <section class="section section--flush work" id="work">
+        <div class="work__overlay">
+            <div class="work__aside">
+                <span class="section-index">04</span>
+                <h2 class="headline">Featured Custom<br>Developed Projects</h2>
+                <div>
+                    <div class="work__counter" id="work-counter">01 — 04</div>
+                    <div class="work__dots" id="work-dots" role="tablist" aria-label="Project navigation"></div>
+                </div>
+            </div>
+            <div class="work__cards" id="work-cards"></div>
+        </div>
+    </section>
+
+    <!-- ===================== 05 / CONTACT ===================== -->
+    <section class="section" id="contact">
+        <header class="section-head" data-reveal>
+            <span class="section-index">05</span>
+            <span class="eyebrow" id="contact-eyebrow"></span>
+        </header>
+        <div class="contact">
+            <div class="contact__intro" data-reveal>
+                <h2 class="headline" id="contact-title"></h2>
+                <p class="muted" id="contact-body" style="max-width:44ch"></p>
+                <div>
+                    <button class="btn btn--ghost" data-cv="DIAZ.NIRIJHON%20KENT.pdf">
+                        View Full CV
+                    </button>
+                </div>
+            </div>
+
+            <form class="glass contact__form" id="contact-form" data-reveal>
+                <div class="field">
+                    <label for="cf-name">Full name / organization *</label>
+                    <input id="cf-name" name="name" type="text" required placeholder="e.g. Hiring Director / Company" autocomplete="organization">
+                </div>
+                <div class="field">
+                    <label for="cf-email">Email address *</label>
+                    <input id="cf-email" name="email" type="email" required placeholder="contact@company.com" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="cf-message">Inquiry / job details *</label>
+                    <textarea id="cf-message" name="message" rows="4" required placeholder="Detail the scope of work, position availability, or project specs..."></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary">Send Inquiry to Nirijhon Diaz</button>
+            </form>
+        </div>
+        <p class="form-success is-hidden" id="form-success" role="status" style="margin-top:1rem"></p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Nirijhon Kent Diaz. All Rights Reserved.</p>
+        <p>IT Staff &amp; Command Center Operations Specialist &bull; TESDA CSS NC II Passer</p>
+    </footer>
+</div>
+<!-- ===================== PROJECT INSPECTOR MODAL ===================== -->
+<div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__panel glass">
+        <button class="modal__close" data-close-modal aria-label="Close project details">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16"><path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4z"/></svg>
+        </button>
+        <div class="modal__head">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16v4H4V4zm0 6h16v4H4v-4zm0 6h16v4H4v-4z"/></svg>
+            <span id="modal-category">Project Details</span>
+        </div>
+        <figure class="modal__shot">
+            <img id="modal-img" src="" alt="Project screenshot">
+        </figure>
+        <h2 class="modal__title" id="modal-title">Project Title</h2>
+        <p class="modal__body" id="modal-desc"></p>
+        <h3 class="mono" style="margin-top:1.75rem">// Key Features</h3>
+        <ul class="modal__features" id="modal-features"></ul>
+        <!-- The 80mm receipt demo is injected here for the expense tracker only. -->
+        <div id="modal-receipt-slot"></div>
+    </div>
+</div>
+
+<!-- ===================== CERTIFICATE LIGHTBOX ===================== -->
+<div class="modal" id="cert-modal" role="dialog" aria-modal="true" aria-label="TESDA Computer Systems Servicing NC II certificate">
+    <div class="modal__panel glass cert__panel">
+        <div class="cert__bar">
+            <span>TESDA CSS NC II Certificate</span>
+            <div class="cert__tools">
+                <button class="cert__tool" data-cert="out" aria-label="Zoom out">&minus;</button>
+                <button class="cert__tool" data-cert="reset" id="cert-zoom-label" style="min-width:4rem">100%</button>
+                <button class="cert__tool" data-cert="in" aria-label="Zoom in">+</button>
+                <button class="cert__tool" data-close-modal aria-label="Close certificate" style="min-width:auto;padding:0 .7rem">Close</button>
+            </div>
+        </div>
+        <div class="cert__scroll" id="cert-scroll-area">
+            <img id="cert-img" src="NC.png" alt="TESDA National Certificate II in Computer Systems Servicing awarded to Nirijhon Kent T. Diaz">
+        </div>
+        <div class="cert__meta">
+            <span>ISSUED: APR 30 2025 &nbsp;|&nbsp; VALID UNTIL: APR 25 2030 &nbsp;|&nbsp; CERT. NO. 25131202003535</span>
+            <a href="NC.png" target="_blank" rel="noopener" id="cert-fullsize" class="btn btn--pink">Open Full Size</a>
+        </div>
+    </div>
+</div>
+
+<!--
+    Everything below is a CLASSIC script (no ES modules, no import map).
+    Browsers block module loading over the file:// protocol, so using modules
+    would leave the page blank whenever index.html is opened by double-clicking
+    it. Classic scripts work from both file:// and a real web server, and let
+    the files stay in dependency order:
+
+    three (UMD -> window.THREE) → data → scene → ui → main
+-->
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/textures.js"></script>
+<script src="assets/js/scene.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+# Netlify build configuration
+# Static site: no build step, no dependencies to install.
+
+[build]
+  publish = "."
+  command = ""
+
+# Netlify serves index.html for the root and for unknown paths, so the
+# single-page portfolio works at "/" without any redirect rules.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Third-party origins: Google Fonts, jsDelivr (three.js UMD, Lenis, GSAP +
+    # ScrollTrigger) and Unsplash (the sound-pad project placeholder shot).
+    # No 'unsafe-inline' is needed for scripts: every <script> is an external
+    # file, since inline scripts would be blocked here anyway.
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net https://images.unsplash.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+# Fingerprints the big certificate/hero images so repeat visits are cached,
+# but keeps HTML revalidated so edits appear immediately.
+[[headers]]
+  for = "/NC.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/Profile.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
